@@ -1,11 +1,12 @@
 LINK:
-https://github.com/ilmari666/cybsec
-(Based on the Springboot-template as per course material that can be installed and run with Maven.)
+-----
+(https://github.com/ilmari666/cybsec)
+Based on the Springboot-template as per course material that can be installed and run with Maven.
 Five flaws as per (https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
 
 FLAW 1:
 -------
-A2:2017-Broken Authentication
+# A2:2017-Broken Authentication
 
 There is no quality check for passwords. In fact the software even comes with a built-in account with credentials of admin / admin.
 
@@ -19,7 +20,7 @@ So perhaps the complexity regarding passwords should not be as strict as "gFs_^6
 
 FLAW 2:
 -------
-A5:2017-Broken Access Control
+# A5:2017-Broken Access Control
 
 The list view of all signups provides a view/edit link to user administrated signups. The id of the signup is provided in the URL and changing the id to another existing one reveals the same view to another persons data. This is true for both the view form as well as the submit form handler.
 
@@ -29,7 +30,7 @@ After this is done there's still a CSRF-risk that can be mitigated by enabling C
 
 FLAW 3:
 -------
-A3:2017 Sensitive Data Exposure
+# A3:2017 Sensitive Data Exposure
 
 HTTP is vulnerable for eaves-dropping and the social security number required for registeration is transferred as plaintext.
 The user password is saved as plaintext. This was often the case in early days of internet as it allowed for easy password retrieval but is terrible for security. 
@@ -39,7 +40,7 @@ HTTPS needs to be enabled and it can be questioned if it's necessary to display 
 
 FLAW 4:
 -------
-A6:2017 Security Misconfiguration
+# A6:2017 Security Misconfiguration
 
 The project is a combination of bad programming practices and misconfiguration.
 It has default accounts and credentials and framwork provided security features turned off.
@@ -49,10 +50,11 @@ In the wild this is often the result of using the same security configuration fo
 
 FLAW 5:
 -------
-A9:2017 Using Components with Known Vulnerabilities
+# A9:2017 Using Components with Known Vulnerabilities
 
 While the project template template originally didn't probably have this issue, time has run it's course and the dependencies it uses now have known vulnerabilities. Running dependency-check-maven reveals the following vulnerable depencencies:
 
+```
 logback-core-1.1.7.jar (pkg:maven/ch.qos.logback/logback-core@1.1.7, cpe:2.3:a:logback:logback:1.1.7:*:*:*:*:*:*:*) : CVE-2017-5929
 tomcat-embed-core-8.5.6.jar (pkg:maven/org.apache.tomcat.embed/tomcat-embed-core@8.5.6, cpe:2.3:a:apache:tomcat:8.5.6:*:*:*:*:*:*:*, cpe:2.3:a:apache_software_foundation:tomcat:8.5.6:*:*:*:*:*:*:*, cpe:2.3:a:apache_tomcat:apache_tomcat:8.5.6:*:*:*:*:*:*:*) : CVE-2016-6816, CVE-2016-6817, CVE-2016-8735, CVE-2016-8745, CVE-2017-12617, CVE-2017-5647, CVE-2017-5648, CVE-2017-5650, CVE-2017-5651, CVE-2017-5664, CVE-2017-7674, CVE-2017-7675, CVE-2018-11784, CVE-2018-1304, CVE-2018-1305, CVE-2018-1336, CVE-2018-8014, CVE-2018-8034, CVE-2018-8037, CVE-2019-0199, CVE-2019-0221, CVE-2019-0232, CVE-2019-10072
 hibernate-validator-5.2.4.Final.jar (pkg:maven/org.hibernate/hibernate-validator@5.2.4.Final, cpe:2.3:a:hibernate:hibernate-validator:5.2.4:*:*:*:*:*:*:*, cpe:2.3:a:redhat:hibernate_validator:5.2.4:*:*:*:*:*:*:*) : CVE-2017-7536
@@ -67,6 +69,7 @@ spring-core-4.3.4.RELEASE.jar (pkg:maven/org.springframework/spring-core@4.3.4.R
 spring-security-test-4.1.3.RELEASE.jar (pkg:maven/org.springframework.security/spring-security-test@4.1.3.RELEASE, cpe:2.3:a:pivotal_software:spring_security:4.1.3.release:*:*:*:*:*:*:*) : CVE-2018-1199, CVE-2018-1258
 spring-security-core-4.1.3.RELEASE.jar (pkg:maven/org.springframework.security/spring-security-core@4.1.3.RELEASE, cpe:2.3:a:pivotal_software:spring_security:4.1.3.release:*:*:*:*:*:*:*) : BREACH attack possible in CSRF tokens, CVE-2016-9879, CVE-2018-1199, CVE-2018-1258
 spring-boot-1.4.2.RELEASE.jar (pkg:maven/org.springframework.boot/spring-boot@1.4.2.RELEASE, cpe:2.3:a:pivotal_software:spring_boot:1.4.2.release:*:*:*:*:*:*:*) : CVE-2017-8046, CVE-2018-1196
+```
 
 To address this one should always use up-to-date components when starting a new project. A good practice is to incorporate a build-time check for known dependencies utilizing something like dependency-check-maven from OWASP. Third party version control services can also deliver this out of box.
 
@@ -76,7 +79,7 @@ When a vulnerable dependency is found an updated version without the flaw must b
 
 FLAW Bonus:
 -----------
-A10:2017 Insufficient Logging & Monitoring
+# A10:2017 Insufficient Logging & Monitoring
 
 The application has no logging enabled. This means that potential and successful breaches are not possible to find.
 
