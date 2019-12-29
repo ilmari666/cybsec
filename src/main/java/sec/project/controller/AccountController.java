@@ -20,18 +20,13 @@ import sec.project.domain.Account;
 @Controller
 public class AccountController {
 
-    @Autowired
-    AccountRepository accountRepository;
+  @Autowired
+  AccountRepository accountRepository;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+  @Autowired
+  PasswordEncoder passwordEncoder;
     
-    @PostConstruct
-    public void init() {
-          accountRepository.save(new Account("maxwell_smart",  passwordEncoder.encode("kenkapuhelin")));
-          accountRepository.save(new Account("smart", passwordEncoder.encode("kenkapuhelin")));
-    }
- 
+
    @GetMapping("/login")
    public String login(){
      return "login";

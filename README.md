@@ -1,7 +1,7 @@
 LINK:
 -----
 https://github.com/ilmari666/cybsec
-Based on the Springboot-template as per course material that can be installed and run with Maven.
+Based on the Springboot-template as per course material that can be installed and run with suitably configured Netbeans and Maven.
 Five flaws as per https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf
 
 This document can be read at https://github.com/ilmari666/cybsec/blob/master/README.md
