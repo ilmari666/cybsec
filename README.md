@@ -4,9 +4,11 @@ LINK:
 Based on the Springboot-template as per course material that can be installed and run with Maven.
 Five flaws as per (https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
 
+This document can be read at (HERE)[https://github.com/ilmari666/cybsec/blob/master/README.md]
+
 FLAW 1:
 -------
-# A2:2017-Broken Authentication
+# A2:2017 Broken Authentication
 
 There is no quality check for passwords. In fact the software even comes with a built-in account with credentials of admin / admin.
 
@@ -20,7 +22,7 @@ So perhaps the complexity regarding passwords should not be as strict as "gFs_^6
 
 FLAW 2:
 -------
-# A5:2017-Broken Access Control
+# A5:2017 Broken Access Control
 
 The list view of all signups provides a view/edit link to user administrated signups. The id of the signup is provided in the URL and changing the id to another existing one reveals the same view to another persons data. This is true for both the view form as well as the submit form handler.
 
