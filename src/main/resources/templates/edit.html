@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit sign up form</title>
+    </head>
+    <body>
+        <h1>View and update your entry</h1>
+        <form action="#" th:action="@{/edit/{id}(id=${signup.id})}" method="POST">
+            <p><label for="name">Name</label>: <input type="text" name="name" id="name" th:value="${signup.name}"/></p>
+            <p><label for="address">Social security number</label>: <input type="text" name="social_sec" id="social_sec" th:value="${signup.social_sec}"/></p>
+            <p><input type="submit" value="Update" /></p>
+        </form>
+
+        <p></p>
+    </body>
+</html>

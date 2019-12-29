@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>All items</title>
+    </head>
+    <body>
+
+        <h1>Attendees</h1>
+        list of things comes here
+        <div th:text="${user.id}"> </div>
+        <div th:each="attendee : ${attendees}">
+            <div th:text="${attendee.name+' '+attendee.id+' '+attendee.author_id}"> </div>
+            <a th:if="${attendee.author_id == user.id}" th:href="@{/edit/{id}/(id=${attendee.id})}">EDIT</a>
+        </div>
+        
+        
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Logout"></input>
+        </form>
+
+    <a th:href="@{/form}">Sign up</a>
+        
+    </body>
+</html>
